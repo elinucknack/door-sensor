@@ -1,0 +1,37 @@
+[Unit]
+Description=Door sensor
+After=network.target
+
+[Service]
+Type=simple
+User=door-sensor
+ExecStart=/usr/bin/node /var/door-sensor/main.js
+Restart=on-failure
+
+Environment=APP_NOTIFICATION_TRIGGER_OFF_LED_PIN=23
+Environment=APP_NOTIFICATION_TRIGGER_ON_LED_PIN=25
+Environment=APP_SIREN_TRIGGER_OFF_LED_PIN=16
+Environment=APP_SIREN_TRIGGER_ON_LED_PIN=21
+Environment=APP_SIREN_LED_PIN=19
+Environment=APP_BUZZER_PIN=22
+Environment=APP_SIREN_PIN=27
+Environment=APP_DOOR_SENSOR_PIN=17
+Environment=APP_NOTIFICATION_TRIGGER_OFF_BTN_PIN=24
+Environment=APP_NOTIFICATION_TRIGGER_ON_BTN_PIN=12
+Environment=APP_SIREN_TRIGGER_OFF_BTN_PIN=20
+Environment=APP_SIREN_TRIGGER_ON_BTN_PIN=26
+Environment=APP_SIREN_BTN_PIN=13
+Environment=APP_SIREN_TRIGGER_ON_DELAY=15
+Environment=APP_SIREN_ON_DELAY=15
+Environment=APP_MQTT_ENABLED=false
+Environment=APP_MQTT_PROTOCOL=mqtt
+Environment=APP_MQTT_HOST=mqtt.mysite.com
+Environment=APP_MQTT_PORT=1883
+Environment=APP_MQTT_USERNAME=mqttuser
+Environment=APP_MQTT_PASSWORD=bXF0dHBhc3N3b3Jk
+Environment=APP_MQTT_TOPIC_SITE=mysite
+Environment=APP_MQTT_TOPIC_DEVICE_TYPE=door-sensor
+Environment=APP_MQTT_TOPIC_DEVICE_NAME=door1
+
+[Install]
+WantedBy=multi-user.target
