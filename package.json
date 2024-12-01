@@ -1,6 +1,6 @@
 {
     "name": "door-sensor",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "keywords": [
         "door",
         "mqtt",
@@ -13,9 +13,6 @@
     "author": "Eli Nucknack <eli.nucknack@gmail.com>",
     "contributors": [],
     "dependencies": {
-        "express": "^4.18.2",
-        "express-basic-auth": "^1.2.1",
-        "fs": "^0.0.1-security",
         "mqtt": "^5.3.5",
         "onoff": "^6.0.3",
         "rxjs": "^7.8.1",
