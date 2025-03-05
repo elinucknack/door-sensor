@@ -71,6 +71,29 @@ systemctl enable /var/door-sensor/door-sensor.service
 systemctl start door-sensor
 ```
 
+### Usage
+
+After the connection to the MQTT server, the door sensor sends its state every 15 seconds and after the state change using the `door-sensor-topic/state` topic.
+
+The door sensor state contains the following data:
+- `notificationTrigger` (ON/OFF)
+- `sirenTrigger` (ON/OFF)
+- `siren`: (ON/OFF)
+- `delayedSirenTriggerOn`: (ON/OFF)
+- `delayedSirenOn`: (ON/OFF)
+- `doorState`: (OPEN/CLOSE)
+- `timestamp`: (Unix time in seconds)
+
+You can enable the notification trigger using the `door-sensor-topic/notification-trigger-on` topic.
+
+You can disable the notification trigger using the `door-sensor-topic/notification-trigger-off` topic.
+
+You can enable the siren trigger using the `door-sensor-topic/siren-trigger-on` topic.
+
+You can disable the siren trigger using the `door-sensor-topic/siren-trigger-off` topic.
+
+You can switch off the siren using the `door-sensor-topic/siren-off` topic.
+
 ## Authors
 
 - [**Eli Nucknack**](mailto:eli.nucknack@gmail.com)
