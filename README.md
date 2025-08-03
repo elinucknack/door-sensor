@@ -18,10 +18,13 @@ Below, you can see both sides of the door sensor PCB design (also available in t
 
 ![PCB design - bottom side](door-sensor-pcb-design-bottom.png "PCB design - bottom side")
 
-The repository also includes printable 3D models (`.stl` files) of cases for the PCB. To mount the PCB to the case, you need 4 2.5×10mm screws. To assembly the case, you need 4 3.5×30mm screws. You also need 1 M4×30mm metric screw and 1 M4 nut in case you want to mount the camera holder. In case you don't want to edit the model, following components are recommended to be used if they are to fit into the holes in the case:
-- PBS-11B-R as the button ([link here](https://www.gmelectronic.com/v/1501016/pbs-11b-r-tlacitko-do-panelu-1-pol-offon))
-- JC-204 as the Jack 3.5mm connector ([link here](https://www.gmelectronic.com/v/1497212/ninigi-jc-204-jack-35-mono))
-- DS-026B as the power supply connector ([link here](https://www.gmelectronic.com/v/1498555/ds-026b-dc-connector-55-21))
+The repository also includes printable 3D models (`.stl` files) of cases for the PCB. To mount the PCB to the case, you need 4 2.5×10mm screws. To assembly the case, you need 4 3.5×30mm screws. You also need 1 M4×30mm metric screw and 1 M4 nut in case you want to mount the camera holder. In case you don't want to edit the model, following components are recommended to be used if they are to fit into the holes in the PCB and in the case:
+- KPEG242 as the buzzer `BZ1` ([link here](https://www.gmelectronic.com/v/1499434/kingstate-kpeg242-piezobuzzer))
+- PS-583Q as the siren `BZ2` ([link here](https://www.gmelectronic.com/v/1498662/hitpoint-ps-583q-piezobuzzer), to mount the siren to the PCB, you need 4 M4×10mm metric screws and 4 M4 nuts)
+- CA9VK100 as trimmers `RV1` and `RV2` ([link here](https://www.gmelectronic.com/v/1491831/acp-ca9vk100-carbon-trimmer))
+- PBS-11B-R as buttons `SW1`, `SW2`, `SW3`, `SW4` and `SW5` ([link here](https://www.gmelectronic.com/v/1501016/pbs-11b-r-tlacitko-do-panelu-1-pol-offon))
+- JC-204 as the Jack 3.5mm connector `J17` ([link here](https://www.gmelectronic.com/v/1497212/ninigi-jc-204-jack-35-mono))
+- DS-026B as the power supply connector `J20` ([link here](https://www.gmelectronic.com/v/1498555/ds-026b-dc-connector-55-21))
 - L-53LSRD as LEDs ([link here](https://www.gmelectronic.com/v/1491570/kingbright-l-53lsrd-led-5mm-cervena), regarding the required color and brightness, pick correspinding resistors `R17`, `R19`, `R21`, `R23` and `R25`)
 - BL-C2 HR04C2 as LED sockets ([link here](https://www.gmelectronic.com/v/1492931/bright-led-bl-c2-hr04c2-objimka-pro-led-5mm))
 
