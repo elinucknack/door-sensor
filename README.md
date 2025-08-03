@@ -12,6 +12,12 @@ The door sensor consists of a Raspberry Pi Zero 2 WH micro computer with additio
 
 ![Door sensor peripherals circuit scheme](door-sensor-peripherals-circuit-scheme.png "Door sensor peripherals circuit scheme")
 
+Below, you can see both sides of the door sensor PCB design (also available in the `.svg` format, the design uses an universal drilled PCB with 2.54mm hole pitch):
+
+![PCB design - top side](door-sensor-pcb-design-top.png "PCB design - top side")
+
+![PCB design - bottom side](door-sensor-pcb-design-bottom.png "PCB design - bottom side")
+
 The repository also includes printable 3D models (`.stl` files) of cases for the PCB. To mount the PCB to the case, you need 4 2.5×10mm screws. To assembly the case, you need 4 3.5×30mm screws. You also need 1 M4×30mm metric screw and 1 M4 nut in case you want to mount the camera holder. In case you don't want to edit the model, following components are recommended to be used if they are to fit into the holes in the case:
 - PBS-11B-R as the button ([link here](https://www.gmelectronic.com/v/1501016/pbs-11b-r-tlacitko-do-panelu-1-pol-offon))
 - JC-204 as the Jack 3.5mm connector ([link here](https://www.gmelectronic.com/v/1497212/ninigi-jc-204-jack-35-mono))
@@ -101,8 +107,8 @@ In case a Raspberry Pi Camera module v 1.3 is connected, it's also possible to u
 After the connection to the MQTT server, the door sensor sends its state every 15 seconds and after the state change using the `door-sensor-topic/state` topic.
 
 The door sensor state contains the following data:
-- `notificationTrigger` (ON/OFF)
-- `sirenTrigger` (ON/OFF)
+- `notificationTrigger`: (ON/OFF)
+- `sirenTrigger`: (ON/OFF)
 - `siren`: (ON/OFF)
 - `delayedSirenTriggerOn`: (ON/OFF)
 - `delayedSirenOn`: (ON/OFF)
