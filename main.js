@@ -258,7 +258,7 @@ const createMqttDriver = () => {
     return {
         connect: () => connect(),
         publish: (topic, message, qos, retain) => publish(topic, message, qos, retain),
-        subscribe: (topic, callback, qos) => subscribe(topic, callback, qos),
+        subscribe: (topic, qos) => subscribe(topic, qos),
         onConnect: callback => onConnect(callback),
         onClose: callback => onClose(callback),
         onError: callback => onError(callback),
@@ -308,14 +308,14 @@ const createStateDriver = () => {
     const read = () => {
         if (!fs.existsSync(`${__dirname}/state.json`)) {
             write(() => logger.warn('State file does not exist. New state file created.'));
-            mqttDriver.publish('state', JSON.stringify({ ...data, timestamp: Date.now() }, null, '    '), 0, true);
+            mqttDriver.publish('state', JSON.stringify({ ...data, timestamp: Date.now() }, null, '    '), 2, true);
         } else {
             try {
                 data = { ...data, ...JSON.parse(fs.readFileSync(`${__dirname}/state.json`, 'utf8')) };
                 data = { ...data, doorState: doorSensorPinDriver.get() ? 'CLOSE' : 'OPEN' };
             } catch (e) {
                 write(() => logger.warn('Invalid state file content. New state file created.'));
-                mqttDriver.publish('state', JSON.stringify({ ...data, timestamp: Date.now() }, null, '    '), 0, true);
+                mqttDriver.publish('state', JSON.stringify({ ...data, timestamp: Date.now() }, null, '    '), 2, true);
             }
         }
     };
@@ -403,7 +403,7 @@ const createStateDriver = () => {
             clearTimeout(delayedSirenOnTimeoutId);
         }
         write();
-        mqttDriver.publish('state', JSON.stringify({ ...data, timestamp: Date.now() }, null, '    '), 0, true);
+        mqttDriver.publish('state', JSON.stringify({ ...data, timestamp: Date.now() }, null, '    '), 2, true);
         apply(buzzerPulseTimeout, buzzerPulseInterval, buzzerPulseCount);
     };
     
@@ -444,7 +444,7 @@ doorSensorPinDriver.watchFalling(value => {
     }
     stateDriver.set(newData);
     if (stateDriver.get('notificationTrigger') === 'ON') {
-        mqttDriver.publish('door-open');
+        mqttDriver.publish('door-open', 2);
     }
 });
 
@@ -488,7 +488,7 @@ const setConnectionState = newConnectionState => {
     connectionState = newConnectionState;
     logger.info(`MQTT client ${newConnectionState}.`);
     if (['connected', 'reconnected'].includes(newConnectionState)) {
-        mqttDriver.publish('state', JSON.stringify({ ...stateDriver.getAll(), timestamp: Date.now() } , null, '    '), 0, true);
+        mqttDriver.publish('state', JSON.stringify({ ...stateDriver.getAll(), timestamp: Date.now() } , null, '    '), 2, true);
     }
 };
 
@@ -508,7 +508,7 @@ mqttDriver.onClose(() => {
     }
 });
 
-mqttDriver.subscribe('#');
+mqttDriver.subscribe('#', 2);
 mqttDriver.onMessage((topic, message) => {
     switch (topic) {
         case 'notification-trigger-off':
