@@ -444,7 +444,7 @@ doorSensorPinDriver.watchFalling(value => {
     }
     stateDriver.set(newData);
     if (stateDriver.get('notificationTrigger') === 'ON') {
-        mqttDriver.publish('door-open', 2);
+        mqttDriver.publish('door-open', '{}', 2);
     }
 });
 
