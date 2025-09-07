@@ -107,7 +107,7 @@ In case a Raspberry Pi Camera module v 1.3 is connected, it's also possible to u
 
 ### Usage
 
-After the connection to the MQTT server, the door sensor sends its state every 15 seconds and after the state change using the `door-sensor-topic/state` topic.
+After the connection to the MQTT server, the door sensor sends its state every 15 seconds and after the state change using the `door-sensor-topic/state` topic, the `retain` flag is set to `true` and the `QoS` flag is set to `2`.
 
 The door sensor state contains the following data:
 - `notificationTrigger`: (ON/OFF)
@@ -118,15 +118,15 @@ The door sensor state contains the following data:
 - `doorState`: (OPEN/CLOSE)
 - `timestamp`: (Unix time in seconds)
 
-You can enable the notification trigger using the `door-sensor-topic/notification-trigger-on` topic.
+You can enable the notification trigger using the `door-sensor-topic/notification-trigger-on` topic, set the `retain` flag to `false`.
 
-You can disable the notification trigger using the `door-sensor-topic/notification-trigger-off` topic.
+You can disable the notification trigger using the `door-sensor-topic/notification-trigger-off` topic, set the `retain` flag to `false`.
 
-You can enable the siren trigger using the `door-sensor-topic/siren-trigger-on` topic.
+You can enable the siren trigger using the `door-sensor-topic/siren-trigger-on` topic, set the `retain` flag to `false`.
 
-You can disable the siren trigger using the `door-sensor-topic/siren-trigger-off` topic.
+You can disable the siren trigger using the `door-sensor-topic/siren-trigger-off` topic, set the `retain` flag to `false`.
 
-You can switch off the siren using the `door-sensor-topic/siren-off` topic.
+You can switch off the siren using the `door-sensor-topic/siren-off` topic, set the `retain` flag to `false`.
 
 ## Authors
 
